@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './pages/LoginUserSlice';
 export const store = configureStore({
   reducer: {
-    user:userReducer,
+    User:userReducer,
   },
 });
 

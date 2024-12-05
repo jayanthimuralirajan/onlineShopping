@@ -50,7 +50,7 @@ function Register() {
     } else if (password1 !== password2) {
       alert("Passwords do not match");
     } else {
-      dispatch(createDetails(email, password1));
+      dispatch(createDetails({emailId:email, password:password1}));
       navigate('/MainPage');
     }
    

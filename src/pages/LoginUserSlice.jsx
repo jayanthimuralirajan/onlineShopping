@@ -12,13 +12,13 @@ export const LoginUserSlice = createSlice({
   initialState,
   reducers: {
     createDetails: (state,action) => {
-      state.emailId=action.emailId;
-      state.password=action.password;
+      state.emailId=action.payload.emailId;
+      state.password=action.payload.password;
     },
     
   },
 });
 
-export const { createDetails } = LoginUserSlice.actions;
+export const {createDetails} = LoginUserSlice.actions;
 
 export default LoginUserSlice.reducer;
