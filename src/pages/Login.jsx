@@ -60,7 +60,7 @@ function Login() {
       <LoginForm>
       <Heading>LOG IN</Heading>
       
-      <Input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} id='uname' placeholder='Enter Your Email'/>
+      <Input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} id='uname' placeholder='Enter Your UserName'/>
     
       <Input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} id='pass' placeholder='Enter Your Password'/>
       <span>Forget password?</span>

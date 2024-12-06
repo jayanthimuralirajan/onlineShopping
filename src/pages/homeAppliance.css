@@ -1,0 +1,24 @@
+.productlist{
+    display: flex;
+    flex-wrap: wrap;
+    gap:5rem;
+    justify-content: center;
+}
+.product{
+    padding:20px;
+    width:20rem;
+    height:20rem;
+}
+img{
+    width:200px;
+    height:300px;
+}
+h1{
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+button{
+    margin:10px;
+}

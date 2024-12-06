@@ -61,7 +61,7 @@ function Register() {
       <RegisterForm>
       <h1>Sign Up</h1>
      
-        <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Enter your emailid'/>
+        <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='enter username:'/>
         
         <input type='password'  value={password1} onChange={(e)=>setPassword1(e.target.value)} placeholder='Create a password'/>
         
