@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import styled from "styled-components";
-import Register from './Register';
-import App from '../App';
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -45,13 +44,13 @@ const Input=styled.input`
 
 function Login() {
   const navigate=useNavigate();
-  const [email,setEmail]=useState('');
+  const [username,setUsername]=useState('');
   const [password,setPassword]=useState('');
-  const sEmail=useSelector((state)=>state.User.emailId);
+  const sUserName=useSelector((state)=>state.User.userName);
   const sPassword=useSelector((state)=>state.User.password);
   function handleSubmit(e){
     e.preventDefault();
-    (sEmail===email && sPassword===password)? navigate('/MainPage') : alert("Username and Password not correct");
+    (sUserName===username && sPassword===password && username!='' && password!='')? navigate('/MainPage') : alert("Username and Password not correct");
   }
 
   return (
@@ -60,7 +59,7 @@ function Login() {
       <LoginForm>
       <Heading>LOG IN</Heading>
       
-      <Input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} id='uname' placeholder='Enter Your UserName'/>
+      <Input type='text' value={username} onChange={(e)=>setUsername(e.target.value)} id='uname' placeholder='Enter Your UserName'/>
     
       <Input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} id='pass' placeholder='Enter Your Password'/>
       <span>Forget password?</span>

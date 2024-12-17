@@ -36,7 +36,7 @@ const Button=styled.button`
 `;
 
 function Register() {
-  const [email,setEmail]=useState('');
+  const [username,setUsername]=useState('');
   const [password1,setPassword1]=useState('');
   const [password2,setPassword2]=useState('');
  
@@ -45,12 +45,12 @@ function Register() {
   function handleSubmit(e){
     e.preventDefault();
 
-    if (!email || !password1 || !password2) {
+    if (!username || !password1 || !password2) {
       alert("Please fill all the fields");
     } else if (password1 !== password2) {
       alert("Passwords do not match");
     } else {
-      dispatch(createDetails({emailId:email, password:password1}));
+      dispatch(createDetails({userName:username, password:password1}));
       navigate('/MainPage');
     }
    
@@ -61,7 +61,7 @@ function Register() {
       <RegisterForm>
       <h1>Sign Up</h1>
      
-        <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='enter username:'/>
+        <input type='text' value={username} onChange={(e)=>setUsername(e.target.value)} placeholder='Enter username:'/>
         
         <input type='password'  value={password1} onChange={(e)=>setPassword1(e.target.value)} placeholder='Create a password'/>
         

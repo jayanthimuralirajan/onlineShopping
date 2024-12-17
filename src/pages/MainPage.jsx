@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 import Menu from './Menu'
 import { Outlet } from 'react-router-dom'
-import HomePage from './HomePage'
+
 
 function MainPage() {
+  
+  const [isMoon, setIsMoon] = useState(true);
   return (
-    <div>
-      <Navbar/>
+    
+    <div className={`${isMoon ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      <Navbar isMoon={isMoon} setIsMoon={setIsMoon}/>
+      <div className='flex'>
       <Menu/>
       <Outlet/>
+      </div>
     </div>
+    
   )
 }
 

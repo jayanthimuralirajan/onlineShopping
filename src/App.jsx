@@ -9,7 +9,9 @@ import Womens from "./pages/Womens";
 import Kids from "./pages/Kids";
 import Menu from "./pages/Menu";
 import MainPage from "./pages/MainPage";
+
 function App() {
+ 
   return(
   <>
 
