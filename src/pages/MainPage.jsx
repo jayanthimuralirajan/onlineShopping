@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 
 function MainPage() {
   
-  const [isMoon, setIsMoon] = useState(true);
+  const [isMoon, setIsMoon] = useState(false);
   return (
     
     <div className={`${isMoon ? 'bg-black text-white' : 'bg-white text-black'}`}>
