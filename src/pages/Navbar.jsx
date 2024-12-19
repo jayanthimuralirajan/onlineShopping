@@ -42,12 +42,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun,faCartShopping,faUser } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 
-function Navbar({isMoon,setIsMoon}){
+function Navbar({isMoon,setIsMoon,showPage,setShowPage}){
 
-
- 
+  const handleHomeClick=()=>{
+    setShowPage(true);
+  }
+  const handleProductClick=()=>{
+    setShowPage(false);
+  }
   const handleIconClick = () => {
     setIsMoon(!isMoon); 
   };
@@ -56,8 +61,20 @@ function Navbar({isMoon,setIsMoon}){
   return (
     <div className='p-5 flex justify-between border-b-2'>
       <div className="flex">
+      <button
+          onClick={handleHomeClick}
+          className="hover:scale-110 transition-transform"
+        >
       <p className='text-xl'>Home</p>
+      </button>
+      <button
+          onClick={handleProductClick}
+          className="hover:scale-110 transition-transform"
+        >
       <p className='text-xl ml-3'>Product</p>
+      </button>
+      {/* <NavLink to='Home' className={'text-xl'}>Home</NavLink> */}
+      {/* <p className='text-xl ml-3'>Product</p> */}
       </div>
       <div className="flex justify-end items-center h-full">
         <button

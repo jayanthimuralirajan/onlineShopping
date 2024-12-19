@@ -73,7 +73,7 @@ function Login() {
   return (
     <>
       <div className='bg-cyan-100 min-h-screen flex items-center justify-center'>
-        <div className='bg-white flex rounded-2xl shadow-lg max-w-2xl p-8'>
+        <div className='bg-white flex rounded-2xl shadow-lg p-8'>
           
           {/* Login Form Section */}
           <div className='w-full md:w-1/2 p-6'>
