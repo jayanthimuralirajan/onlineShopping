@@ -8,7 +8,7 @@ function Menu() {
       <NavLink to='HomeAppliance'>Home Appliances</NavLink>
       <NavLink to='Mens'>Mens</NavLink>
       <NavLink to='Womens'>Womens</NavLink>
-      <NavLink to='Kids'>Kids</NavLink>
+      <NavLink to='Jewelery'>Jewelery</NavLink>
       
     </div>
   )

@@ -1,85 +1,66 @@
-import React from 'react'
 
-
-import "./homeAppliance.css";
+import React, { useState, useEffect } from 'react';
 
 
 function Mens() {
   
-  const MensData = [
-    {
-      name: "",
-      price: 1000,
-      photoName: "/mens1.jpg",
-      
-    },
-    {
-      name: "",
-      price: 2000,
-      photoName: "/mens2.jpg",
-      
-    },
-    {
-      name: "",
-      price: 300,
-      photoName: "/mens3.jpg",
-      
-    },
-    {
-      name: "",
-      price: 1500,
-      photoName: "/mens4.jpg",
-      
-    },
-    {
-      name: "",
-      price: 500,
-      photoName: "/mens5.jpg",
-      
-    },
-    {
-      name: "",
-      price: 800,
-      photoName: "/mens6.jpg",
-      
-    },
-    {
-      name: "",
-      price: 850,
-      photoName: "/mens7.jpg",
-      
-    },
-    {
-      name: "",
-      price: 300,
-      photoName: "/mens8.jpg",
-      
-    },
-    {
-      name: "",
-      price: 2200,
-      photoName: "/mens9.jpg",
-      
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  const buyNow = (product) => {
+    console.log('Buying product:', product);
+    
+  };
 
   
+  const addToCart = (product) => {
+    console.log('Adding to cart:', product);
+    
+  };
+
+  
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((json) => {
+        const electronics = json.filter(product => product.category === `men's clothing`);
+        setProducts(electronics);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
+
   return (
-    <div>
-      
-      <div className='productlist'>
-        
-        {MensData.map((data, index) => (
-          <div className="product" key={index}>
-            <img src={data.photoName} />
-            <p>Price: {data.price}</p>
-            <button>BuyNow</button>
-            <button>Add to Cart</button>
-          </div>
-        ))}
+    <div className="py-20 px-20">
+      <div className="flex flex-wrap justify-center gap-10 px-4">
+        {products.length === 0 ? (
+          <p>Loading products...</p>
+        ) : (
+          products.map((product) => (
+            <div className="bg-white w-1/4 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105" key={product.id}>
+              <img src={product.image} alt={product.title} className="w-full h-64 object-cover" />
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
+                <p className="text-sm text-gray-600 mt-2">Price: ${product.price}</p>
+                <div className="mt-4 flex justify-between">
+                  <button 
+                    className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition duration-200"
+                    onClick={() => buyNow(product)}
+                  >
+                    Buy Now
+                  </button>
+                  <button 
+                    className="ml-1 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition duration-200"
+                    onClick={() => addToCart(product)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Mens;

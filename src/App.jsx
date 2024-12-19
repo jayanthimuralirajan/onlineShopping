@@ -6,9 +6,9 @@ import Navbar from "./pages/Navbar";
 import Register from "./pages/Register";
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import Womens from "./pages/Womens";
-import Kids from "./pages/Kids";
 import Menu from "./pages/Menu";
 import MainPage from "./pages/MainPage";
+import Jewelery from "./pages/Jewelery";
 
 function App() {
  
@@ -26,7 +26,7 @@ function App() {
     <Route path='HomeAppliance' element={<HomeAppliance/>}/>
     <Route path='Mens' element={<Mens/>}/>
     <Route path='Womens' element={<Womens/>}/>
-    <Route path='Kids' element={<Kids/>}/>
+    <Route path='Jewelery' element={<Jewelery/>}/>
     
   </Route>
   </Routes>

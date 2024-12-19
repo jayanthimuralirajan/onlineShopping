@@ -117,7 +117,7 @@ function Login() {
             </p>
           </div>
           
-          {/* Image Section */}
+          
           <div className='hidden md:block w-1/2'>
             <img className='w-full h-full object-cover rounded-2xl' src='/loginImage.jpg' alt='Login Illustration'/>
           </div>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function HomeAppliance() {
+function Jewelery() {
   
   const [products, setProducts] = useState([]);
 
@@ -22,7 +22,7 @@ function HomeAppliance() {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((json) => {
-        const electronics = json.filter(product => product.category === 'electronics');
+        const electronics = json.filter(product => product.category === 'jewelery');
         setProducts(electronics);
       })
       .catch((error) => console.error('Error fetching data:', error));
@@ -63,4 +63,4 @@ function HomeAppliance() {
   );
 }
 
-export default HomeAppliance;
+export default Jewelery;
