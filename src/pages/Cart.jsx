@@ -5,7 +5,8 @@ import CartItem from './CartItem';
 
 function Cart() {
     const username=useSelector((state)=>state.User.userName);
-    const cart=useSelector(getCart);
+    
+    const cart=useSelector((state)=>state.Cart.cart);
     
   return (
     <>
@@ -13,10 +14,10 @@ function Cart() {
     { (!cart || cart.length === 0) ?(
    <p>Your cart is empty.</p>):cart.length
 }
-    {/* {cart.map((item)=>(
+    {cart.map((item)=>(
         <CartItem item={item} key={item.id}/>
 
-    ))} */}
+    ))}
     <button>BuyNow</button>    
   </>
   )
