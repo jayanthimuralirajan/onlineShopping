@@ -1,22 +1,26 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getCart } from './CartSlice';
+import CartItem from './CartItem';
 
 function Cart() {
-    const username=useSelector((state)=>state.User.username);
+    const username=useSelector((state)=>state.User.userName);
     const cart=useSelector(getCart);
-    const dispatch=useDispatch();
+    
   return (
     <>
-    {cart.map((item)=>(
-        CartItem item={item} key={item.productId}/>
+    <h2 className='text-xl font-semibold'>Your cart, {username}</h2>
+    { (!cart || cart.length === 0) ?(
+   <p>Your cart is empty.</p>):cart.length
+}
+    {/* {cart.map((item)=>(
+        <CartItem item={item} key={item.id}/>
 
-    ))}
+    ))} */}
     <button>BuyNow</button>    
   </>
   )
+  
 }
 
-export default Cart
-
-const username=useSelector((state))
+export default Cart;

@@ -1,10 +1,17 @@
 
 import React, { useState, useEffect } from 'react';
-
+import { useDispatch} from 'react-redux';
+import { addItem} from './CartSlice';
+import Menu from './Menu';
 
 function Jewelery() {
   
   const [products, setProducts] = useState([]);
+
+  const dispatch=useDispatch();
+  const addToCart = (product) => {
+    dispatch(addItem(product))
+  };
 
   const buyNow = (product) => {
     console.log('Buying product:', product);
@@ -12,10 +19,6 @@ function Jewelery() {
   };
 
   
-  const addToCart = (product) => {
-    console.log('Adding to cart:', product);
-    
-  };
 
   
   useEffect(() => {
@@ -29,7 +32,8 @@ function Jewelery() {
   }, []);
 
   return (
-    <div className="py-20 px-20">
+    <div className="py-10 px-5 flex" >
+      <Menu/>
       <div className="flex flex-wrap justify-center gap-10 px-4">
         {products.length === 0 ? (
           <p>Loading products...</p>
