@@ -15,7 +15,7 @@ export const cartSlice = createSlice({
       console.log(state.cart.length);
     },
     deleteItem(state,action){
-      state.cart=state.cart.filter((item)=>item.productId!==action.payload);
+      state.cart=state.cart.filter((item)=>item.id!==action.payload);
     },
     
   },
