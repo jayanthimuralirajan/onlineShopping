@@ -37,7 +37,14 @@ function HomeAppliance() {
   return (
     <div className="py-10 px-5 flex" >
       <Menu/>
-      <div className="flex flex-wrap justify-center gap-10 px-4">
+      <div className='flex flex-col'>
+        <p></p>
+        <select className='w-36 ml-36'>
+          <option>Default</option>
+          <option>Highest Price</option>
+          <option>Lowest Price</option>
+        </select>
+      <div className="flex flex-wrap justify-center gap-10 px-4 mt-5">
         {products.length === 0 ? (
           <p>Loading products...</p>
         ) : (
@@ -63,8 +70,10 @@ function HomeAppliance() {
                 </div>
               </div>
             </div>
+          
           ))
         )}
+      </div>
       </div>
     </div>
   );
