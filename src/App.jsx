@@ -12,6 +12,7 @@ import Womens from './pages/Womens';
 import Jewelery from './pages/Jewelery';
 import Cart from './pages/Cart';
 import HomePage from './pages/HomePage';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="Mens" element={<Mens />} />
           <Route path="Womens" element={<Womens />} />
           <Route path="Jewelery" element={<Jewelery />} />
+          <Route path="Profile" element={<Profile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

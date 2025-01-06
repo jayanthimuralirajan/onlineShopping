@@ -37,17 +37,30 @@ function Navbar({ isMoon, setIsMoon }) {
           />
         </button>
 
-        <NavLink to="/MainPage/Cart" className="hover:scale-110 transition-transform flex items-center">
-          <FontAwesomeIcon className="ml-3" icon={faCartShopping} size="xl" />
-          {cartLength > 0 && <span className="ml-2">{cartLength}</span>}
-        </NavLink>
+        <div className="relative flex items-center ml-5 group">
+          <NavLink to="/MainPage/Cart" className="flex items-center hover:scale-110 transition-transform">
+            <FontAwesomeIcon className="ml-3" icon={faCartShopping} size="xl" />
+            {cartLength > 0 && <span className="ml-2">{cartLength}</span>}
+          </NavLink>
+          <span className="absolute  bottom-0 left-0 w-full text-center text-xs opacity-0 group-hover:opacity-100 transition-opacity ml-2 top-9">Cart</span>
+        </div>
 
-        <FontAwesomeIcon className="ml-3" icon={faUser} size="xl" />
+        <div className="relative flex items-center ml-5 group">
+          <NavLink to="/MainPage/Profile" className="flex items-center hover:scale-110 transition-transform">
+            <FontAwesomeIcon className="ml-3" icon={faUser} size="xl" />
+          </NavLink>
+          <span className="absolute bottom-0 left-0 w-full text-center text-xs opacity-0 group-hover:opacity-100 transition-opacity ml-2 top-9">Profile</span>
+          
+        </div>
+
+       
       </div>
     </div>
   );
 }
 
 export default Navbar;
+
+
 
 

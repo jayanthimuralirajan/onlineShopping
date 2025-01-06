@@ -1,10 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addItem } from './CartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem,setUser} from './CartSlice';
+import { loggedInUser } from './LoginUserSlice';
 import Menu from './Menu';
 
 function HomeAppliance() {
+  const userDetail = useSelector((state) => state.User.loggedInUser); // Get the logged-in user
+  
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [sortOption, setSortOption] = useState('Default'); 
@@ -13,6 +16,8 @@ function HomeAppliance() {
   
   const addToCart = (product) => {
     dispatch(addItem(product));
+    dispatch(setUser(userDetail));
+   
   };
 
   const buyNow = (product) => {
@@ -105,3 +110,4 @@ function HomeAppliance() {
 }
 
 export default HomeAppliance;
+
