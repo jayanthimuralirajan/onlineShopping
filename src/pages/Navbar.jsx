@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Navbar({ isMoon, setIsMoon }) {
-  const cartLength = useSelector((state) => state.Cart.cart.length);
+  const cartLength = useSelector((state) => 
+    state.Cart.cart.reduce((total, item) => total + item.quantity, 0)
+  );
   
   const handleIconClick = () => {
     setIsMoon(!isMoon); 

@@ -168,8 +168,9 @@ function Cart() {
   };
 
   useEffect(() => {
-    const calculatedTotal = cart.reduce((acc, item) => acc + item.price, 0);
-    setTotal(calculatedTotal);
+    const calculatedTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+setTotal(calculatedTotal);
+
   }, [cart]);
 
   return (
@@ -182,8 +183,10 @@ function Cart() {
           ) : (
             cart.map((item) => (
               <CartItem item={item} key={item.id} />
+              
             ))
           )}
+          {console.log(cart)}
         </div>
 
         <div className="p-9 bg-slate-100 m-10 rounded-lg shadow-lg h-1/4">

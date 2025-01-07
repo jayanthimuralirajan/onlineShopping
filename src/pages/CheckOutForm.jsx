@@ -463,9 +463,8 @@ function CheckOutForm() {
     };
 
     // Calculate total items and subtotal
-    const totalItems = cart.length;
-    const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
-
+    const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
     // If the order is placed, do not show the checkout form
     if (isOrderPlaced) {
         return (
