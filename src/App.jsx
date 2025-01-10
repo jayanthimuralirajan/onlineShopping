@@ -13,6 +13,8 @@ import Jewelery from './pages/Jewelery';
 import Cart from './pages/Cart';
 import HomePage from './pages/HomePage';
 import Profile from './pages/Profile';
+import SearchResults from './pages/SearchResults';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="Womens" element={<Womens />} />
           <Route path="Jewelery" element={<Jewelery />} />
           <Route path="Profile" element={<Profile/>}/>
+          <Route path="search" element={<SearchResults />} /> 
+          <Route path="product/:id" element={<ProductDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
