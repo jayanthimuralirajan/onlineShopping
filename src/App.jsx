@@ -15,6 +15,7 @@ import HomePage from './pages/HomePage';
 import Profile from './pages/Profile';
 import SearchResults from './pages/SearchResults';
 import ProductDetails from './pages/ProductDetails';
+import CheckOutForm from './pages/CheckOutForm';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="Profile" element={<Profile/>}/>
           <Route path="search" element={<SearchResults />} /> 
           <Route path="product/:id" element={<ProductDetails />} />
+          <Route path="checkOutForm" element={<CheckOutForm/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

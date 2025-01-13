@@ -15,7 +15,7 @@ export const LoginUserSlice = createSlice({
         (user) => user.email === action.payload.email
       );
       if (!existingUser) {
-        state.user.push(action.payload); // Add cart to the new user
+        state.user.push(action.payload); 
       }
     },
     loginUser: (state, action) => {
@@ -23,13 +23,13 @@ export const LoginUserSlice = createSlice({
         (user) => user.email === action.payload.email && user.password === action.payload.password
       );
       if (user) {
-        state.loggedInUser = user; // Set loggedInUser to the found user
+        state.loggedInUser = user; 
       } else {
-        state.loggedInUser = null; // Reset if no user found
+        state.loggedInUser = null; 
       }
     },
     logoutUser: (state) => {
-      state.loggedInUser = null; // Clear the logged-in user on logout
+      state.loggedInUser = null;
     },
   },
 });

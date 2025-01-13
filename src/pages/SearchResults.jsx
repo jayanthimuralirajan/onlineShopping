@@ -21,19 +21,19 @@ function SearchResults() {
     console.log('Buying product:', product);
   };
 
-  const query = new URLSearchParams(location.search).get('query'); // Extract query from URL
+  const query = new URLSearchParams(location.search).get('query');
 
   useEffect(() => {
-    if (!query) return; // If no query, return early
+    if (!query) return; 
 
-    // Fetch products based on the search query
+ 
     const fetchProducts = async () => {
       try {
         setLoading(true);
         const response = await fetch(`https://fakestoreapi.com/products`);
         const data = await response.json();
         const filteredProducts = data.filter(product =>
-          product.title.toLowerCase().includes(query.toLowerCase()) // Filter products by title
+          product.title.toLowerCase().includes(query.toLowerCase()) 
         );
         setProducts(filteredProducts);
       } catch (err) {
@@ -85,20 +85,7 @@ function SearchResults() {
               </div>
             </div>
           ))
-        // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        //   {products.length > 0 ? (
-        //     products.map((product) => (
-        //       <div key={product.id} className="border rounded-lg p-4">
-        //         <img src={product.image} alt={product.title} className="w-full h-48 object-cover mb-4" />
-        //         <h3 className="font-semibold">{product.title}</h3>
-        //         <p>{product.description}</p>
-        //         <p className="mt-2 font-bold">${product.price}</p>
-        //       </div>
-        //     ))
-        //   ) : (
-        //     <p>No products found.</p>
-        //   )}
-        // </div>
+        
       )}
     </div>
     </div>

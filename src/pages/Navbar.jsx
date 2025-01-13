@@ -177,7 +177,7 @@ function Navbar({ isMoon, setIsMoon }) {
   };
 
   const handleSearchClick = () => {
-    // Navigate to the search results page with the search term as a query parameter
+
     navigate(`/MainPage/search?query=${searchTerm}`);
   };
 
