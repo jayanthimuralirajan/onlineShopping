@@ -8,6 +8,7 @@ import { addItem, incrementItem, decrementItem } from './CartSlice';
 function ProductDetails() {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
+  const [quantityl, setQuantityl] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,20 +26,26 @@ function ProductDetails() {
   }, [id]);
 
   const addToCart = (product) => {
+    product.quantity=quantityl;
     dispatch(addItem({ ...product, quantity }));
   };
 
   const buyNow = (product) => {
+    product.quantity=quantityl;
+    navigate('/MainPage/checkOutForm', { state: { product } });
     console.log('Buying product:', product);
-    navigate('/Cart'); 
+    
   };
 
   const incrementQuantity = () => {
-    dispatch(incrementItem(product.id));
+    setQuantityl(prevQuantity => prevQuantity + 1);
+    // dispatch(incrementItem(product.id));
   };
 
   const decrementQuantity = () => {
-    dispatch(decrementItem(product.id));
+    setQuantityl(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  
+    // dispatch(decrementItem(product.id));
   };
 
   if (!product) {
@@ -84,7 +91,7 @@ function ProductDetails() {
             >
               -
             </button>
-            <span className="px-4">{quantity}</span>
+            <span className="px-4">{quantityl}</span>
             <button
               onClick={incrementQuantity}
               className="px-4 py-2 bg-gray-200 rounded-lg"
@@ -125,6 +132,9 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+
+
+
 
 
 

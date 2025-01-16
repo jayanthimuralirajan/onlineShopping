@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, setUser } from './CartSlice';
 import { loggedInUser } from './LoginUserSlice';
 import Menu from './Menu';
-import { Link, NavLink } from 'react-router-dom'; 
+import { Link, Navigate, NavLink, useNavigate, useNavigation } from 'react-router-dom'; 
 
 function HomeAppliance() {
   const userDetail = useSelector((state) => state.User.loggedInUser); 
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [sortOption, setSortOption] = useState('Default'); 
-
+  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   
   const addToCart = (product) => {
@@ -20,17 +21,22 @@ function HomeAppliance() {
     dispatch(setUser(userDetail));
   };
 
-  const buyNow = (product) => {
-    console.log('Buying product:', product);
-  };
+  const buyNow=(product)=>{
+    
+    navigate('/MainPage/checkOutForm', { state: { product } });
+  }
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((json) => {
         const electronics = json.filter(product => product.category === 'electronics');
-        setProducts(electronics);
-        setSortedProducts(electronics);  
+        const electronic = electronics.map(product => ({
+          ...product,
+          quantity: 1
+        }));
+        setProducts(electronic);
+        setSortedProducts(electronic);  
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -85,19 +91,20 @@ function HomeAppliance() {
                       alt={product.title}
                       className="w-full h-64 object-cover"
                     />
-                    </NavLink>
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
-                      <p className="text-sm text-gray-600 mt-2">Price: ${product.price}</p>
-                      <div className="mt-4 flex justify-between">
-                        <NavLink to="/MainPage/checkOutForm">
+                  
+                    
+                      <h3 className="p-4 text-lg font-semibold text-gray-800">{product.title}</h3>
+                      <p className="pl-4 text-sm text-gray-600 mt-2">Price: ${product.price}</p>
+                    </NavLink>      
+                      <div className="pl-4 pr-4 mt-4 flex justify-between">
+                        
                         <button
                           className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition duration-200"
-                          onClick={() => buyNow(product)}
+                          onClick={()=>buyNow(product)}
                         >
                           Buy Now
                         </button>
-                        </NavLink>
+                        
                         <button
                           className="ml-1 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition duration-200"
                           onClick={() => addToCart(product)}
@@ -107,7 +114,7 @@ function HomeAppliance() {
                       </div>
                     </div>
                 
-                </div>
+              
               ))}</div>
             </>
           )}

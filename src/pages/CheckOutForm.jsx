@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from './CartSlice'; 
+import { useLocation } from 'react-router-dom';
 
 function CheckoutForm({ user, formData, handleChange, errors, setFormCompleted }) {
     const handleSubmit = (e) => {
@@ -116,6 +117,7 @@ function CheckoutForm({ user, formData, handleChange, errors, setFormCompleted }
 
 
 function OrderSummary({ formData, submitOrder, totalItems, subtotal, user }) {
+
     return (
         <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto mt-10">
             <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Order Summary</h2>
@@ -144,7 +146,10 @@ function CheckOutForm() {
     const dispatch = useDispatch(); 
     const cart = useSelector((state) => state.Cart.cart); 
     const user = useSelector((state) => state.User.loggedInUser); 
+    const location = useLocation();
 
+    const { product } = location.state || {};
+    console.log(product);
     const [formData, setFormData] = useState({
         address: '',
         city: '',
@@ -183,7 +188,13 @@ function CheckOutForm() {
         console.log('Order submitted:', formData);
     };
 
-  
+    const submitSingleOrder = () => {
+      
+        
+        setIsOrderPlaced(true); 
+        console.log('Order submitted:', formData);
+    };
+    
     const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -206,12 +217,21 @@ function CheckOutForm() {
                     setFormCompleted={setFormCompleted}
                 />
             )}
-            {formCompleted && (
+            {formCompleted && !product && (
                 <OrderSummary
                     formData={formData}
                     submitOrder={submitOrder}
                     totalItems={totalItems}
                     subtotal={subtotal}
+                    user={user}
+                />
+            )}
+            {formCompleted && product && (
+                <OrderSummary 
+                    formData={formData}
+                    submitOrder={submitSingleOrder}
+                    totalItems={product.quantity}
+                    subtotal={product.quantity*product.price}
                     user={user}
                 />
             )}
