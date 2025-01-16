@@ -27,7 +27,9 @@ function ProductDetails() {
 
   const addToCart = (product) => {
     product.quantity=quantityl;
-    dispatch(addItem({ ...product, quantity }));
+    console.log(product);
+    dispatch(addItem({ ...product}));
+    console.log(product);
   };
 
   const buyNow = (product) => {
