@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { deleteItem, incrementItem, decrementItem } from './CartSlice';
+import { NavLink } from 'react-router-dom';
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -23,8 +24,9 @@ function CartItem({ item }) {
   return (
     <li className="flex items-center justify-between p-4 border-b border-gray-200 sm:flex-row flex-col">
       <div className="flex items-center space-x-4 w-full sm:w-auto relative">
-        
+      <NavLink to={`/MainPage/product/${item.id}`} className="block">
         <img src={item.image} alt={item.title} className="w-20 h-20 object-cover rounded-lg" />
+        </NavLink>
         <div className="flex-1">
           <p className="text-sm font-medium text-gray-900">{item.title}</p>
           <p className="text-sm text-gray-600">${item.price}</p>

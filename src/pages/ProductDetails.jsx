@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,8 +16,12 @@ function ProductDetails() {
     return productInCart ? productInCart.quantity : 1;
   });
 
+  
   useEffect(() => {
-   
+    setQuantityl(quantity);
+  }, [quantity]); 
+
+  useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
       .then((json) => setProduct(json))
@@ -26,28 +29,23 @@ function ProductDetails() {
   }, [id]);
 
   const addToCart = (product) => {
-    product.quantity=quantityl;
+    product.quantity = quantityl;
     console.log(product);
-    dispatch(addItem({ ...product}));
-    console.log(product);
+    dispatch(addItem({ ...product }));
   };
 
   const buyNow = (product) => {
-    product.quantity=quantityl;
+    product.quantity = quantityl;
     navigate('/MainPage/checkOutForm', { state: { product } });
     console.log('Buying product:', product);
-    
   };
 
   const incrementQuantity = () => {
     setQuantityl(prevQuantity => prevQuantity + 1);
-    // dispatch(incrementItem(product.id));
   };
 
   const decrementQuantity = () => {
     setQuantityl(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-  
-    // dispatch(decrementItem(product.id));
   };
 
   if (!product) {
@@ -69,9 +67,7 @@ function ProductDetails() {
   return (
     <div className="py-10 px-5 flex justify-center">
       <div className="w-full md:w-3/4 flex flex-col md:flex-row justify-between">
-       
         <div className="md:w-1/2 flex flex-col justify-center items-center md:items-start mb-8 md:mb-0">
-          
           <button
             onClick={() => navigate(-1)}
             className="text-gray-600 text-2xl mb-5 hover:text-black"
@@ -86,39 +82,39 @@ function ProductDetails() {
           />
 
           <div className='w-full'>
-          <div className="flex  items-center justify-center mb-4">
-            <button
-              onClick={decrementQuantity}
-              className="px-4 py-2 bg-gray-200 rounded-lg"
-            >
-              -
-            </button>
-            <span className="px-4">{quantityl}</span>
-            <button
-              onClick={incrementQuantity}
-              className="px-4 py-2 bg-gray-200 rounded-lg"
-            >
-              +
-            </button>
-          </div>
+            <div className="flex items-center justify-center mb-4">
+              <button
+                onClick={decrementQuantity}
+                className="px-4 py-2 bg-gray-200 rounded-lg"
+              >
+                -
+              </button>
+              <span className="px-4">{quantityl}</span>
+              <button
+                onClick={incrementQuantity}
+                className="px-4 py-2 bg-gray-200 rounded-lg"
+              >
+                +
+              </button>
+            </div>
 
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={() => buyNow(product)}
-              className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition duration-200"
-            >
-              Buy Now
-            </button>
-            <button
-              onClick={() => addToCart(product)}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-200"
-            >
-              Add to Cart
-            </button>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => buyNow(product)}
+                className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-800 transition duration-200"
+              >
+                Buy Now
+              </button>
+              <button
+                onClick={() => addToCart(product)}
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition duration-200"
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
-        </div>
-      
+
         <div className="md:w-1/2 p-6 flex flex-col">
           <h2 className="text-3xl font-semibold mb-4">{product.title}</h2>
           <p className="text-lg text-gray-600 mb-2">Category: {product.category}</p>
@@ -134,7 +130,6 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
-
 
 
 
