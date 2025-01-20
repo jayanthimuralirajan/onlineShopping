@@ -59,9 +59,9 @@ function HomeAppliance() {
   };
 
   return (
-    <div className="py-10 px-5 flex">
+    <div className=" flex">
       <Menu />
-      <div className="flex flex-col">
+      <div className="pt-10  flex flex-col ">
           {sortedProducts.length === 0 ? (
             <p>Loading products...</p>
           ) : (

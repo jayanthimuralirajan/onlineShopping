@@ -1,6 +1,5 @@
 
 
-
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from './CartSlice'; 
@@ -13,120 +12,122 @@ function CheckoutForm({ user, formData, handleChange, errors, setFormCompleted }
     };
 
     return (
-        <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto mt-10">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Checkout Form</h2>
+        <div className="p-8 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-lg shadow-xl w-4/5 mx-auto mt-10">
+            <h2 className="text-3xl font-semibold text-white mb-6 text-center">Checkout Form</h2>
             <form onSubmit={handleSubmit}>
-                <div className="space-y-8 pl-4">
-                    <div className="">
-                        {console.log(user)}
-                        <h3 className="text-xl mb-2 mt-2 text-gray-700 font-semibold">Personal Details</h3>
+                <div className="pl-4">
+                    <h3 className="text-xl mb-2 mt-2 text-white font-semibold">Personal Details</h3>
+                    <div className="space-y-4 border-b-2 pb-3 border-white">
+                        <p className='text-white'><b>Name:</b> {user.userName}</p>
+                        <p className='text-white'><b>Email:</b> {user.email}</p>
+                    </div>
+
+                    <div className="mt-6">
+                        <h3 className="text-xl mb-2 mt-4 text-white font-semibold">Shipping Address</h3>
+
                         <div className="space-y-4">
-                            <p><b>Name:</b> {user.userName}</p>
-                            <p><b>Email:</b> {user.email}</p>
-                        </div>
-                        <h3 className="text-xl mb-2 mt-4 text-gray-700 font-semibold">Shipping Address</h3>
-                        <div>
-                            <label className="block text-lg text-gray-700">Address</label>
-                            <input
-                                type="text"
-                                name="address"
-                                value={formData.address}
-                                onChange={handleChange}
-                                className="w-2/3 p-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                            {errors.address && <span className="text-red-500 text-sm">{errors.address}</span>}
-                        </div>
+                            <div>
+                                <label className="block text-lg text-white">Address</label>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    className="w-2/3 p-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                />
+                                {errors.address && <span className="text-red-500 text-sm">{errors.address}</span>}
+                            </div>
 
-                        <div>
-                            <label className="block text-lg text-gray-700">City</label>
-                            <input
-                                type="text"
-                                name="city"
-                                value={formData.city}
-                                onChange={handleChange}
-                                className="w-2/3 p-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                            {errors.city && <span className="text-red-500 text-sm">{errors.city}</span>}
-                        </div>
+                            <div>
+                                <label className="block text-lg text-white">City</label>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    value={formData.city}
+                                    onChange={handleChange}
+                                    className="w-2/3 p-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                />
+                                {errors.city && <span className="text-red-500 text-sm">{errors.city}</span>}
+                            </div>
 
-                        <div>
-                            <label className="block text-lg text-gray-700">Zip Code</label>
-                            <input
-                                type="text"
-                                name="zip"
-                                value={formData.zip}
-                                onChange={handleChange}
-                                className="w-2/3 p-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                            {errors.zip && <span className="text-red-500 text-sm">{errors.zip}</span>}
+                            <div>
+                                <label className="block text-lg text-white">Zip Code</label>
+                                <input
+                                    type="text"
+                                    name="zip"
+                                    value={formData.zip}
+                                    onChange={handleChange}
+                                    className="w-2/3 p-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                />
+                                {errors.zip && <span className="text-red-500 text-sm">{errors.zip}</span>}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="">
-                        <h3 className="text-xl mb-2 mt-4 text-gray-700 font-semibold">Payment Method</h3>
+                    <div className="mt-6">
+                        <h3 className="text-xl mb-2 mt-4 text-white font-semibold">Payment Method</h3>
+
                         <div>
-                            <label className="block text-lg text-gray-700">Card Number</label>
+                            <label className="block text-lg text-white">Card Number</label>
                             <input
                                 type="text"
                                 name="cardNumber"
                                 value={formData.cardNumber}
                                 onChange={handleChange}
-                                className="w-2/3 p-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-2/3 p-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
                             {errors.cardNumber && <span className="text-red-500 text-sm">{errors.cardNumber}</span>}
                         </div>
 
                         <div>
-                            <label className="block text-lg text-gray-700">Expiration Date</label>
+                            <label className="block text-lg text-white">Expiration Date</label>
                             <input
                                 type="text"
                                 name="expiryDate"
                                 value={formData.expiryDate}
                                 onChange={handleChange}
-                                className="w-2/3 p-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-2/3 p-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
                             {errors.expiryDate && <span className="text-red-500 text-sm">{errors.expiryDate}</span>}
                         </div>
 
                         <div>
-                            <label className="block text-lg text-gray-700">CVV</label>
+                            <label className="block text-lg text-white">CVV</label>
                             <input
                                 type="text"
                                 name="cvv"
                                 value={formData.cvv}
                                 onChange={handleChange}
-                                className="w-2/3 p-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-2/3 p-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
                             {errors.cvv && <span className="text-red-500 text-sm">{errors.cvv}</span>}
                         </div>
                     </div>
+                </div>
 
-                    <div className="flex justify-center">
-                        <button
-                            type="submit"
-                            className="mt-6 p-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
-                        >
-                            Continue to Order Summary
-                        </button>
-                    </div>
+                <div className="flex justify-center mt-6">
+                    <button
+                        type="submit"
+                        className="p-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+                    >
+                        Continue to Order Summary
+                    </button>
                 </div>
             </form>
         </div>
     );
 }
 
-
 function OrderSummary({ formData, submitOrder, totalItems, subtotal, user }) {
-
     return (
-        <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto mt-10">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Order Summary</h2>
-            <div className="space-y-4">
+        <div className="p-8 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 rounded-lg shadow-xl max-w-3xl mx-auto mt-10">
+            <h2 className="text-3xl font-semibold text-white mb-6 text-center">Order Summary</h2>
+            <div className="space-y-4 text-white">
                 <p><b>Name:</b> {user.userName}</p>
                 <p><b>Address:</b> {formData.address}, {formData.city}, {formData.zip}</p>
                 <p><b>Card Number:</b> **** **** **** {formData.cardNumber.slice(-4)}</p>
                 <p><b>Expiration:</b> {formData.expiryDate}</p>
-                <p><b>Total Cart Items:</b> {totalItems}</p>
+                <p><b>Total Items:</b> {totalItems}</p>
                 <p><b>Subtotal:</b> ${subtotal.toFixed(2)}</p>
             </div>
 
@@ -182,15 +183,12 @@ function CheckOutForm() {
     };
 
     const submitOrder = () => {
-      
         dispatch(clearCart());
         setIsOrderPlaced(true); 
         console.log('Order submitted:', formData);
     };
 
     const submitSingleOrder = () => {
-      
-        
         setIsOrderPlaced(true); 
         console.log('Order submitted:', formData);
     };
@@ -231,7 +229,7 @@ function CheckOutForm() {
                     formData={formData}
                     submitOrder={submitSingleOrder}
                     totalItems={product.quantity}
-                    subtotal={product.quantity*product.price}
+                    subtotal={product.quantity * product.price}
                     user={user}
                 />
             )}
@@ -240,3 +238,4 @@ function CheckOutForm() {
 }
 
 export default CheckOutForm;
+

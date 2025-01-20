@@ -1,5 +1,3 @@
-              
-              
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,7 +35,8 @@ function Jewelery() {
           quantity: 1
         }));
         setProducts(jewelery);
-        setSortedProducts(jewelery);  
+        setSortedProducts(jewelery); 
+      
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -60,9 +59,9 @@ function Jewelery() {
   };
 
   return (
-    <div className="py-10 px-5 flex">
+    <div className=" flex">
       <Menu />
-      <div className="flex flex-col">
+      <div className="pt-10 flex flex-col">
           {sortedProducts.length === 0 ? (
             <p>Loading products...</p>
           ) : (
@@ -126,4 +125,5 @@ function Jewelery() {
 }
 
 export default Jewelery;
-
+              
+              
